@@ -1,7 +1,7 @@
 
 
 
-var sound, amplitude, cnv;
+var sound, amplitude, cnv, source, fft;
 
 function preload(){
   alligatorClip = loadSound('assets/alligator.mp3');
@@ -31,12 +31,16 @@ function preload(){
 }
 
 function setup() {
-
+//this initializes fft frequency analyzer and sets the sound to be the input
+  fft = new p5.FFT(0, 1024);
+  fft.setInput(sound);
+    
   var text;
   var canvas;
   var rowdiv;
-  cnv = createCanvas(windowWidth, windowHeight);
-  cnv.position(0, 0);
+  cnv = createCanvas(windowWidth+10, windowHeight);
+  cnv.parent("canvasContainer");
+  cnv.position(-10, 0);
   
   rowdiv = createDiv('Patrol names and calls');
   startcap = rowdiv.class('startcap');
@@ -117,11 +121,9 @@ function setup() {
   endcap = rowdiv.class('endcap');
 
 
-  amplitude = new p5.Amplitude();
-  amplitude.toggleNormalize(true);
-  amplitude.smooth(.2);
   // start / stop the sound when canvas is clicked
   alligator.mouseOver(function() {
+      alligatorClip.playMode('restart');
       alligatorClip.play();
   });
   alligator.mouseOut(function() {
@@ -130,6 +132,7 @@ function setup() {
   
   
   antelope.mouseOver(function() {
+      antelopeClip.playMode('restart');
       antelopeClip.play();
   });
   antelope.mouseOut(function() {
@@ -138,6 +141,7 @@ function setup() {
   
 
   bat.mouseOver(function() {
+      batClip.playMode('restart');
       batClip.play();
   });
   bat.mouseOut(function() {
@@ -146,6 +150,7 @@ function setup() {
   
   
   bear.mouseOver(function() {
+      bearClip.playMode('restart');
       bearClip.play();
   });
   bear.mouseOut(function() {
@@ -154,6 +159,7 @@ function setup() {
   
   
   beaver.mouseOver(function() {
+      beaverClip.playMode('restart');
       beaverClip.play();
   });
   beaver.mouseOut(function() {
@@ -162,6 +168,7 @@ function setup() {
   
   
   bobwhite.mouseOver(function() {
+      bobwhiteClip.playMode('restart');
       bobwhiteClip.play();
   });
   bobwhite.mouseOut(function() {
@@ -170,6 +177,7 @@ function setup() {
   
   
   buffalo.mouseOver(function() {
+      buffaloClip.playMode('restart');
       buffaloClip.play();
   });
   buffalo.mouseOut(function() {
@@ -178,7 +186,8 @@ function setup() {
   
   
   crow.mouseOver(function() {
-      crowClip.play();
+      crowClip.playMode('restart');
+      crowClip.play().loop();
   });
   crow.mouseOut(function() {
       crowClip.stop();
@@ -186,6 +195,7 @@ function setup() {
   
   
   cuckoo.mouseOver(function() {
+      cuckooClip.playMode('restart');
       cuckooClip.play();
   });
   cuckoo.mouseOut(function() {
@@ -194,6 +204,7 @@ function setup() {
   
   
   eagle.mouseOver(function() {
+      eagleClip.playMode('restart');
       eagleClip.play();
   });
   eagle.mouseOut(function() {
@@ -202,6 +213,7 @@ function setup() {
   
   
   flamingarrow.mouseOver(function() {
+      flamingarrowClip.playMode('restart');
       flamingarrowClip.play();
   });
   flamingarrow.mouseOut(function() {
@@ -210,6 +222,7 @@ function setup() {
   
   
   fox.mouseOver(function() {
+      foxClip.playMode('restart');
       foxClip.play();
   });
   fox.mouseOut(function() {
@@ -218,6 +231,7 @@ function setup() {
   
   
   hawk.mouseOver(function() {
+      hawkClip.playMode('restart');
       hawkClip.play();
   });
   hawk.mouseOut(function() {
@@ -226,6 +240,7 @@ function setup() {
   
   
   moose.mouseOver(function() {
+      mooseClip.playMode('restart');
       mooseClip.play();
   });
   moose.mouseOut(function() {
@@ -234,6 +249,7 @@ function setup() {
   
   
   owl.mouseOver(function() {
+      owlClip.playMode('restart');
       owlClip.play();
   });
   owl.mouseOut(function() {
@@ -242,6 +258,7 @@ function setup() {
   
   
   panther.mouseOver(function() {
+      pantherClip.playMode('restart');
       pantherClip.play();
   });
   panther.mouseOut(function() {
@@ -250,6 +267,7 @@ function setup() {
   
   
   pelican.mouseOver(function() {
+      pelicanClip.playMode('restart');
       pelicanClip.play();
   });
   pelican.mouseOut(function() {
@@ -258,6 +276,7 @@ function setup() {
   
   
   pinetree.mouseOver(function() {
+      pinetreeClip.playMode('restart');
       pinetreeClip.play();
   });
   pinetree.mouseOut(function() {
@@ -266,6 +285,7 @@ function setup() {
   
   
   raccoon.mouseOver(function() {
+      raccoonClip.playMode('restart');
       raccoonClip.play();
   });
   raccoon.mouseOut(function() {
@@ -274,14 +294,7 @@ function setup() {
   
   
   rattlesnake.mouseOver(function() {
-      rattlesnakeClip.play();
-  });
-  rattlesnake.mouseOut(function() {
-      rattlesnakeClip.stop();
-  });
-  
-  
-  rattlesnake.mouseOver(function() {
+      rattlesnakeClip.playMode('restart');
       rattlesnakeClip.play();
   });
   rattlesnake.mouseOut(function() {
@@ -290,6 +303,7 @@ function setup() {
   
   
   raven.mouseOver(function() {
+      ravenClip.playMode('restart');
       ravenClip.play();
   });
   raven.mouseOut(function() {
@@ -298,6 +312,7 @@ function setup() {
   
   
   seal.mouseOver(function() {
+      sealClip.playMode('restart');
       sealClip.play();
   });
   seal.mouseOut(function() {
@@ -306,6 +321,7 @@ function setup() {
   
   
   whippoorwill.mouseOver(function() {
+      whippoorwillClip.playMode('restart');
       whippoorwillClip.play();
   });
   whippoorwill.mouseOut(function() {
@@ -313,6 +329,7 @@ function setup() {
   });
   
   wolf.mouseOver(function() {
+      wolfClip.playMode('restart');
       wolfClip.play();
   });
   wolf.mouseOut(function() {
@@ -324,12 +341,60 @@ function setup() {
 
 
 function draw() {
+//  fill(0);
+//  background(255);
+//  var level = amplitude.getLevel();
+//  var size = map(level, 0, 1, 0, windowWidth);
+//  ellipse(width/2, height/2, size, size);
+    
+
+    
   background(255);
-  fill(0);
-  var level = amplitude.getLevel();
-  var size = map(level, 0, 1, 0, windowWidth);
-  ellipse(width/2, height/2, size, size);
-  
+  var spectrum = fft.analyze();
+  var newBuffer = [];
+  stroke(0,0,0); // waveform is red
+  strokeWeight(6);
+  var quarterSpectrum = spectrum.length/6;
+
+  beginShape();
+  for (var i = 0; i < quarterSpectrum; i++) {
+    var point = smoothPoint(spectrum, i, 8);
+    newBuffer.push(point);
+    var x = map(i, 0, quarterSpectrum, 0, width);
+    var y = map(point, 0, 255, height, 0);
+    curveVertex(x, y);
+  }
+  endShape();
+    
+}
+
+
+
+// average a point in an array with its neighbors
+function smoothPoint(spectrum, index, numberOfNeighbors) {
+
+    
+  // default to 2 neighbors on either side
+  var neighbors = numberOfNeighbors || 2;
+  var len = spectrum.length;
+
+  var val = 0;
+
+  // start below the index
+  var indexMinusNeighbors = index - neighbors;
+  var smoothedPoints = 0;
+
+  for (var i = indexMinusNeighbors; i < (index+neighbors) && i < len; i++) {
+    // if there is a point at spectrum[i], tally it
+    if (typeof(spectrum[i]) !== 'undefined') {
+      val += spectrum[i];
+      smoothedPoints++;
+    }
+  }
+
+  val = val/smoothedPoints;
+
+  return val;
 }
 
 function windowResized() {
