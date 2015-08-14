@@ -1,0 +1,93 @@
+
+@font-face {
+	font-family:'Ebisu-Light';
+	src: url('fonts/Ebisu-Light_gdi.eot');
+	src: url('fonts/Ebisu-Light_gdi.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Ebisu-Light_gdi.woff') format('woff'),
+		url('fonts/Ebisu-Light_gdi.ttf') format('truetype'),
+		url('fonts/Ebisu-Light_gdi.svg#Ebisu-Light') format('svg');
+	font-weight: 300;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0020-2212;
+}
+
+@font-face {
+	font-family:'Ebisu-Bold';
+	src: url('fonts/Ebisu-Bold_gdi.eot');
+	src: url('fonts/Ebisu-Bold_gdi.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Ebisu-Bold_gdi.woff') format('woff'),
+		url('fonts/Ebisu-Bold_gdi.ttf') format('truetype'),
+		url('fonts/Ebisu-Bold_gdi.svg#Ebisu-Bold') format('svg');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0020-2212;
+}
+canvas{
+	position: fixed !;
+}
+.listening{
+	opacity: 0;
+	position: absolute;
+	pointer-events: none;
+	left: 0;
+	top: 0;
+	width: 26px;
+	height: 26px;
+	z-index: 999;
+}
+body{
+	font-size: 24px;
+	letter-spacing: 1px;
+	font-weight: bold;
+	line-height: 36px;
+	font-family: 'Ebisu-Light';
+}
+.row, .startcap, .endcap{
+  position: relative;
+  margin: 0 auto;
+  width: 50%;
+}
+.row:hover{
+	background: black;
+	color: white;
+	padding: 0 12px;
+}
+
+.left, .right{
+  display:inline-block;
+}
+.left{
+  text-align: left;
+	width: 33%;
+}
+.right{
+  text-align: right;
+  float:right;
+  width: 66%;
+}
+.startcap{
+	font-family:'Ebisu-Bold';
+	text-transform: uppercase;
+	text-align: justify;
+	padding:  0;
+	padding: 24px 0 0;
+	position: fixed;
+	top: 36px;
+	left: 25%;
+	border-top: 6px solid #000;
+}
+.startcap:after, .endcap:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  line-height: 0;
+}
+.endcap{
+	text-align: justify;
+	margin-top: 12px;
+}
+.alligator{
+	margin-top: 120px;
+}
