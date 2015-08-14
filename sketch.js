@@ -266,7 +266,7 @@ function setup() {
   
   
   raccoon.mouseOver(function() {
-      raccoonlip.play();
+      raccoonClip.play();
   });
   raccoon.mouseOut(function() {
       raccoonClip.stop();
